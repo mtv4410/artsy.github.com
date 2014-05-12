@@ -9,7 +9,7 @@
   <meta name="author" content="Artsy">
 
   
-  <meta name="description" content="Refactoring usually describes chages to code. Specifically, small changes that bring a codebase closer to the desired state. By making these changes &hellip;">
+  <meta name="description" content="Whatever you have against monolithic architectures, at least they&#8217;re easy to test. And when those tests succeed, you can be reasonably &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -71,6 +71,143 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+    <a href="/blog/2014/05/12/continuous-integration-for-service-oriented-architectures/">
+      <div class="date">
+
+
+
+
+  
+<time datetime="2014-05-12T10:50:00-04:00" pubdate>05/12/14</time></div>
+    
+    
+      <h1 class="entry-title">Continuous Integration for Service-oriented Architectures</h1>
+
+    
+    </a>
+    
+      <p class="meta">
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Whatever you have against monolithic architectures, at least they&#8217;re easy to test. And when those tests succeed, you can be reasonably confident the live app will work the same way.</p>
+
+<p>Artsy began as one such monolithic app, but we&#8217;ve been refactoring into an ecosystem of related APIs and sites. Today, when you search for <a href="https://artsy.net/gene/cultural-commentary">&#8220;cultural commentary&#8221;</a> or visit <a href="https://artsy.net/artist/robert-longo">Robert Longo</a> on <a href="https://artsy.net">artsy.net</a>, the page is rendered by a web app, sources data from an API, retrieves recommendations from a separate service, tracks trends in another, and records analytics in yet another.</p>
+
+<p>This was a boost for developer productivity and scaling, but eviscerated the value of our tests. We repeatedly encountered bugs that were failings of <em>the interaction between codebases</em> rather than failings of individual ones. Test libraries and tools typically concern themselves with one isolated app. When you have services that consume services that consume services, those isolated tests (with their stubs of everything else) don&#8217;t necessarily reflect production&#8217;s reality.</p>
+
+<p>So how should we develop our small, focused apps (or <a href="http://en.wikipedia.org/wiki/Service-oriented_architecture">service-oriented architecture</a>, or <a href="http://martinfowler.com/articles/microservices.html">microservices</a>&#8230;) with confidence? We set out to build a dedicated acceptance test suite that would run tests across multiple services, configuring and integrating them in a way that closely matches the production environment.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/05/12/continuous-integration-for-service-oriented-architectures/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+    <a href="/blog/2014/04/24/generating-notifications-and-personalized-emails-efficiently/">
+      <div class="date">
+
+
+
+
+  
+<time datetime="2014-04-24T16:00:00-04:00" pubdate>04/24/14</time></div>
+    
+    
+      <h1 class="entry-title">Generating Notifications and Personalized Emails Efficiently</h1>
+
+    
+    </a>
+    
+      <p class="meta">
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>We recently launched a new personalized email here at <a href="https://artsy.net">Artsy</a> that features content that a given user might find interesting. The goal of this post is to describe how we built a backend system that efficiently generates these e-mails for all our users. I&#8217;ll talk about the first, naive implementation that had performance problems right away, and how the second implementation (currently in production) solved those issues, and whose behavior at scale is well-defined and understood. I won&#8217;t go into the details of the design and layout of the mail itself and how we render the content - there are several earlier blog posts that deal with those: <a href="http://artsy.github.io/blog/2014/03/18/presenters-and-memoization-moving-logic-out-of-templates/">Presenters and Memoization</a>, <a href="http://artsy.github.io/blog/2014/03/17/ruby-helper-to-group-artworks-into-a-pinterest-style-layout-for-email/">Pinterest-style Layouts</a> and <a href="http://artsy.github.io/blog/2014/03/17/some-tips-for-email-layout-and-responsiveness/">Email Layouts and Responsiveness</a>.</p>
+
+<p><img src="/images/2014-04-24-generating-notifications-and-personalized-emails-efficiently/percy_example.png" alt="Personalized Email Example" /></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/04/24/generating-notifications-and-personalized-emails-efficiently/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+    <a href="/blog/2014/04/17/building-an-english-auction-with-mongodb/">
+      <div class="date">
+
+
+
+
+  
+<time datetime="2014-04-17T12:21:00-04:00" pubdate>04/17/14</time></div>
+    
+    
+      <h1 class="entry-title">Building an English Auction With MongoDB</h1>
+
+    
+    </a>
+    
+      <p class="meta">
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Artsy ran several successful auctions over the past few months. The first, <a href="https://artsy.net/feature/two-x-two">TWO x TWO</a>, raised hundreds of thousands of dollars for amfAR (the AIDS Research foundation), and the Dallas Museum of Art. It was followed by <a href="https://artsy.net/feature/ici-benefit-auction">Independent Curators International</a>, at which Artsy launched on-site auction projection screens, which displayed competing bids coming in online from places around the world, like Oslo and Santa Monica, in realtime. Users could place bids on the website, via the iPhone app or with one of the Artsy representatives in the room carrying an iPad.  All the auction lots sold, and Artsy helped ICI to raise 50% more than its target revenue goal. Other, recent Artsy auctions include <a href="https://artsy.net/feature/public-art-fund-2014-spring-benefit">Public Art Fund</a> and the <a href="https://artsy.net/feature/brooklyn-artists-ball">Brooklyn Artists Ball</a>, benefitting the Brooklyn Museum.</p>
+
+<p><img src="/images/2014-04-17-implementing-bidding-in-an-english-auction-with-mongodb/ici-live-auction.jpg" alt="ICI Auction: Live" /></p>
+
+<p>The domain of auctions is a fascinating one, and includes everything from buying items on eBay to trading livestock and selling investment products on the stock exchange. For those interested in the large spectrum of auctions I highly recommend <a href="http://www.sci.brooklyn.cuny.edu/~parsons/projects/mech-design/publications/bluffers-final.pdf">Auctions and bidding: A guide for computer
+scientists</a> by Simon Parsons (CUNY), Juan A. Rodriguez-Aguilar (CSIC) and Mark Klein (MIT).</p>
+
+<p>At Artsy we implemented a classic English auction with, so called, &#8220;book bids&#8221;. I spent a fair amount of time visiting engineering teams that have built internet auctions, most of which were transactional systems where taking a position on an item involved starting a transaction, running an auction round and committing the changes. In contrast, we chose to deliver a simpler, eventually consistent system on top of MongoDB, in which all data is immutable and where some level of serialization occurs within a single background process.</p>
+
+<p>In this post we&#8217;ll go over some data modeling and examine the auction engine implementation details.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/04/17/building-an-english-auction-with-mongodb/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -388,147 +525,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-    <a href="/blog/2013/11/07/upgrading-to-mongoid4/">
-      <div class="date">
-
-
-
-
-  
-<time datetime="2013-11-07T12:34:00-05:00" pubdate>11/07/13</time></div>
-    
-    
-      <h1 class="entry-title">Upgrading to Mongoid 4.x</h1>
-
-    
-    </a>
-    
-      <p class="meta">
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I recently went through an exercise of upgrading one of Artsy&#8217;s largest web projects to the current HEAD of Mongoid 4.x. This is going to be a major release with numerous changes and I wanted to flush out bugs before the final version of the ODM is released. All Mongoid changes currently live on <a href="https://github.com/mongoid/mongoid">master</a>.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">gem</span> <span class="s1">&#39;mongoid&#39;</span><span class="p">,</span> <span class="ss">github</span><span class="p">:</span> <span class="s1">&#39;mongoid/mongoid&#39;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>In the process I&#8217;ve worked on making a few gems compatible with Mongoid 4 and learned a couple of things that should help you make this process smooth for your own applications.</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2013/11/07/upgrading-to-mongoid4/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-    <a href="/blog/2013/08/27/introduction-to-aws-opsworks/">
-      <div class="date">
-
-
-
-
-  
-<time datetime="2013-08-27T12:31:00-04:00" pubdate>08/27/13</time></div>
-    
-    
-      <h1 class="entry-title">Introduction to AWS OpsWorks</h1>
-
-    
-    </a>
-    
-      <p class="meta">
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>OpsWorks is a new service from Amazon that promises to provide high-level tools to manage your EC2-based deployment. From <a href="http://aws.typepad.com/aws/2013/02/aws-opsworks-flexible-application-management-in-the-cloud.html">the announcement</a>:</p>
-
-<blockquote><p>AWS OpsWorks features an integrated management experience for the entire application lifecycle including resource provisioning, configuration management, application deployment, monitoring, and access control. It will work with applications of any level of complexity and is independent of any particular architectural pattern.</p></blockquote>
-
-<p>After scratching our heads about exactly what that meant, we tried it anyway. If you&#8217;ve been straining at the limits of your Platform as a Service (PaaS) provider, or just wishing for more automation for your EC2 deployment, you may want to try it out too.</p>
-
-<p>Artsy has been experimenting with OpsWorks for a few months now and recently adopted it for the production <a href="http://artsy.net">artsy.net</a> site. We&#8217;re excited to share what we&#8217;ve learned in the process.</p>
-
-<p><img class="screenshot" src="/images/2013-08-27-introduction-to-aws-opsworks/opsworks.png" title="[OpsWorks overview]" ></p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2013/08/27/introduction-to-aws-opsworks/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-    <a href="/blog/2013/06/23/normalizing-gmail-email-addresses-with-canonical-emails/">
-      <div class="date">
-
-
-
-
-  
-<time datetime="2013-06-23T12:21:00-04:00" pubdate>06/23/13</time></div>
-    
-    
-      <h1 class="entry-title">Normalizing GMail E-Mail Addresses With CanonicalEmails</h1>
-
-    
-    </a>
-    
-      <p class="meta">
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>A whopping 49% of Artsy users have &#8220;gmail.com&#8221; email addresses. The next domain name, &#8220;hotmail.com&#8221;, doesn&#8217;t even come close, with only 6%.</p>
-
-<p><img src="/images/2013-06-23-normalizing-gmail-email-addresses-with-canonical-emails/artsy-email-domains.png" /></p>
-
-<p>GMail addresses ignore periods and are case-insensitive. For example, &#8220;Donald.Duck@gmail.com&#8221; and &#8220;donaldduck@gmail.com&#8221; are the same account. You can log-in to GMail with both. Users often register with the former and try to log-in to Artsy with the latter. With so many GMail users, expect a dozen support emails per day.</p>
-
-<p>The solution is to normalize these emails into a canonical form.</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2013/06/23/normalizing-gmail-email-addresses-with-canonical-emails/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -554,23 +550,23 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/05/12/continuous-integration-for-service-oriented-architectures/">Continuous integration for service-oriented architectures</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/24/generating-notifications-and-personalized-emails-efficiently/">Generating Notifications and Personalized Emails Efficiently</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/04/17/building-an-english-auction-with-mongodb/">Building an English Auction with MongoDB</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/04/02/refactoring-infrastructure/">Refactoring Infrastructure</a>
       </li>
     
       <li class="post">
         <a href="/blog/2014/03/18/presenters-and-memoization-moving-logic-out-of-templates/">Presenters and Memoization: Moving Logic out of Templates</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/03/17/ruby-helper-to-group-artworks-into-a-pinterest-style-layout-for-email/">Ruby Helper to Group Artworks into a Pinterest-style Layout for Email</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/03/17/some-tips-for-email-layout-and-responsiveness/">Some Tips for Email Layout and Responsiveness</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/03/17/detecting-trends-with-forgetsy/">Detecting trends using Forgetsy</a>
       </li>
     
   </ul>

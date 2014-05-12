@@ -284,7 +284,25 @@
     </url>
     <url>
         <loc>http://artsy.github.io/blog/2014/04/02/refactoring-infrastructure/</loc>
-        <lastmod>2014-04-03T13:58:39-04:00</lastmod>
+        <lastmod>2014-05-12T01:54:07-04:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://artsy.github.io/blog/2014/04/17/building-an-english-auction-with-mongodb/
+        </loc>
+        <lastmod>2014-05-12T01:54:07-04:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://artsy.github.io/blog/2014/04/24/generating-notifications-and-personalized-emails-efficiently/
+        </loc>
+        <lastmod>2014-05-12T01:54:07-04:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://artsy.github.io/blog/2014/05/12/continuous-integration-for-service-oriented-architectures/
+        </loc>
+        <lastmod>2014-05-12T11:54:55-04:00</lastmod>
     </url>
     <url>
         <loc>http://artsy.github.io/about/</loc>
@@ -292,14 +310,14 @@
     </url>
     <url>
         <loc>http://artsy.github.io/blog/archives/</loc>
-        <lastmod>2014-04-03T13:58:39-04:00</lastmod>
+        <lastmod>2014-05-12T11:54:55-04:00</lastmod>
     </url>
     <url>
         <loc>http://artsy.github.io/</loc>
-        <lastmod>2014-04-03T13:58:39-04:00</lastmod>
+        <lastmod>2014-05-12T11:54:55-04:00</lastmod>
     </url>
     <url>
         <loc>http://artsy.github.io/open-source/</loc>
-        <lastmod>2014-04-03T13:58:39-04:00</lastmod>
+        <lastmod>2014-05-12T01:54:07-04:00</lastmod>
     </url>
 </urlset>
